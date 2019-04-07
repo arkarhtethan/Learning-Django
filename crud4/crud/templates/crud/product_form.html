@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if form.instance.pk %}
+
+	Update Product
+
+{% else %}
+
+	Create Product
+
+{% endif %}
+
+	<form method="POST">
+		
+		{% csrf_token%}
+
+		{{form.as_p}}
+
+
+		{% if form.instance.pk %}
+
+			<input type="submit" value="Update">
+
+		{% else %}
+
+			<input type="submit" value="Submit">
+
+		{% endif %}
+
+																																																																									</form>
+
+{% endblock %}

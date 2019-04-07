@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if form.instance.pk %}
+
+	Update Proudct {{ form.instance }}
+
+{% else %}
+
+	Create Product
+
+{% endif %}
+
+<form action="" method="POST">
+
+	{% csrf_token %}
+
+	{{ form }}
+
+	{% if form.instance.pk %}
+
+		<input type="submit" value="Update">
+
+	{% else %}
+
+		<input type="submit" value="Create">
+
+	{% endif %}
+	
+</form>
+
+<br>
+
+{% if form.instance.pk %}
+
+<button>
+		
+	<a href="{% url 'product-detail' pk=form.instance.pk %}">
+		
+		Back
+
+	</a>
+
+</button>
+
+{% endif %}
+
+<button>
+		
+	<a href="{% url 'product-list' %}">
+		
+		Products
+
+	</a>
+
+</button>
+
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'crud_app/home_page.html' %}
+
+{% block content %}
+
+<div class="row offset-md-4">
+
+	<div class="col-md-6">
+
+		{% if form.instance.pk %}
+
+		<h3> Update {{ form.instance.name }} </h3>
+
+		{% else %}
+
+		<h3> Add {{ tag }} </h3>
+
+		{% endif %}
+
+		<form method="post">
+
+			{{ form }}
+
+			{% csrf_token %}
+
+			{% if form.instance.pk %}
+
+				<input type="submit" class="btn btn-block btn-info" value="Update">
+
+			{% else %}
+				
+				<input type="submit" class="btn btn-block btn-info" value="Save">
+
+			{% endif %}
+
+			
+
+		</form>
+
+	</div>
+
+</div>
+
+{% endblock %}
+
+{% block javascript %}
+
+<script>
+
+	$(document).ready(function(){
+
+		$("#id_status").addClass("form-control mb-4");
+
+	});
+</script>
+
+{% endblock %}

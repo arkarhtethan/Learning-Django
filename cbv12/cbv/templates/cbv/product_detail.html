@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+	<ul>
+		
+		<li>{{ product.name }}</li>
+
+		<li>{{ product.price }}</li>
+
+		<li>{{ product.get_category_display }}</li>
+
+	</ul>
+
+	<button>
+		
+		<a href="{% url 'product-update' pk=product.pk %}"> Update </a>
+
+	</button>
+
+		<button>
+		
+		<a href="{% url 'product-delete' pk=product.pk %}"> Delete </a>
+
+	</button>
+
+{% endblock %}

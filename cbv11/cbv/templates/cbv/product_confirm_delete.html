@@ -1,0 +1,24 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+Delete product {{ object.instance.name }} ? 
+
+<form action="" method="POST">
+
+	{% csrf_token %}
+
+	<input type="submit" value="Delete"> 
+	
+	<button>
+		
+		<a href="{% url 'product-detail' pk=object.pk %}"> Back 
+		</a>
+
+	</button>
+
+
+
+</form>
+{% endblock %}

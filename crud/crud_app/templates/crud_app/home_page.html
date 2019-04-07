@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+
+{% block navbar %}
+
+	<div class="container">
+		
+		<div class="row m-4 p-4">
+
+			<div class="button-group mr-4">
+				
+				<button class="btn"><a href="{% url 'laptops' %}">Laptop</a></button>
+				<button class="btn"><a href="{% url 'add_laptop' %}">+</a></button>
+
+			</div>
+
+			<div class="button-group">
+				
+				<button class="btn"><a href="{% url 'desktops' %}">Desktop</a></button>
+				<button class="btn"><a href="{% url 'add_desktop' %}">+</a></button>
+
+			</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+{% endblock %}
+
+{% block content %}
+
+	<div class="container">
+		
+		{% if devices %}
+
+			<table class="table table-striped">
+				
+				<tr>
+					
+					<th> NO </th>
+
+					<th> Name </th>
+
+					<th> Price </th>
+
+					<th> Status</th>
+
+					<th> Delete? </th>
+
+				</tr>
+
+				<tbody>
+
+					{% for device in devices %}
+					
+					<tr>
+						
+						<td> {{ forloop.counter }} </td>
+
+						{% if tag == 'laptop' %}
+
+							<td> <a href="{% url 'update_laptop' pk=device.pk %}">{{ device.name }}</a></td>
+
+						{% elif tag == 'desktop' %}							
+
+							<td> <a href="{% url 'update_desktop' pk=device.pk %}">{{ device.name }}</a></td>
+
+						{% endif %}
+						
+						<td> {{ device.price }} </td>
+
+						<td> {{ device.status }} </td>
+
+						<td>
+
+						{% if tag == 'laptop' %}
+
+
+							<a href="{% url 'delete_laptop' pk=device.pk %}"> Delete</a>
+
+						{% elif tag == 'desktop' %} 
+
+							<a href="{% url 'delete_desktop' pk=device.pk %}"> Delete</a>
+							
+						{% endif %}
+
+						</td>
+
+					</tr>
+
+					{% endfor %}
+
+				</tbody>
+
+			</table>
+
+		{% else %}
+
+			There is no item
+
+		{% endif %}
+
+	</div>
+
+{% endblock %}

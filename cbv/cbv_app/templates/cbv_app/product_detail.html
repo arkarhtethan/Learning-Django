@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<ul>
+
+	<li>
+
+		<a href="{% url 'detail_view' pk=object.pk %}">
+
+		{{ object }}
+
+		</a>
+
+	</li>
+
+	<li>{{ object.price }}</li>
+
+</ul>
+
+<div>
+	
+	<a href="{% url 'index_view' %}">Product List</a>
+
+</div>
+
+{% endblock %}

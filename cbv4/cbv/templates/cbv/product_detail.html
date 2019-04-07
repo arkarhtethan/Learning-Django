@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<ul>
+	
+	<li> {{ object }} </li>
+	<li> {{ object.price }} </li>
+
+</ul>
+
+<a href="{% url 'product_delete' pk=object.pk %}">
+	
+	<button> Delete </button>
+
+</a> <br> <br>
+
+<a href="{% url 'product_update' pk=object.pk %}">
+	
+	<button> Update </button>
+
+</a> <br> <br>
+
+<a href="{% url 'product_list'%}">
+	
+	<button> Back </button>
+
+</a>
+
+{% endblock %}

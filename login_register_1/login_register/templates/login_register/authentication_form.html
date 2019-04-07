@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+	{{ header }}
+
+	<form method="POST">
+		
+		{{ form }}
+
+		{% csrf_token %}
+
+		<input type="submit" name="" value="{{ submit_button_name }}">
+
+	</form>
+
+{% endblock %}

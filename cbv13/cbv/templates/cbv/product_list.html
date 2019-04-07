@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+	{% for product in object_list %}
+
+		<ul>
+			
+			<li> {{ product.name }} </li>
+			<li> {{ product.price }} </li>
+			<li> {{ product.get_display_category }} </li>
+
+		</ul>
+
+	{% endblock %}
+
+{% endblock %}

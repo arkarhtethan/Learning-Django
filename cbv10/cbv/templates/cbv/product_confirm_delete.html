@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+Delete Proudct {{ object }}
+
+<form action="" method="POST">
+
+	{% csrf_token %}
+
+	<input type="submit" value="Delete">
+
+</form>
+
+<br>
+
+{% if object.pk %}
+
+<button>
+		
+	<a href="{% url 'product-detail' pk=object.pk %}">
+		
+		Back
+
+	</a>
+
+</button>
+
+{% endif %}
+
+<button>
+		
+	<a href="{% url 'product-list' %}">
+		
+		Products
+
+	</a>
+
+</button>
+
+{% endblock %}

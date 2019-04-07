@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+	<button class="mx-4 my-4">
+		
+		<a href="{% url 'product-create' %}">Add Product</a>
+
+	</button>
+
+
+	<button class="mx-4 my-4">
+		
+		<a href="{% url 'product-create' %}">Import</a>
+
+	</button>
+
+
+	<button class="mx-4 my-4">
+		
+		<a href="{% url 'product-export-csv' %}">Export CSV</a>
+
+	</button>
+
+	<button class="mx-4 my-4">
+		
+		<a href="{% url 'product-export-json' %}">Export JSON</a>
+
+	</button>
+
+	{% for product in object_list %}
+
+		<ul>
+			
+			<li>
+
+				<a href="{% url 'product-detail' pk=product.pk %}">
+
+					{{ product.name }}
+
+				</a>
+
+			</li>
+
+			<li>{{ product.price }}</li>
+
+			<li>{{ product.get_category_display }}</li>
+
+		</ul>
+
+	{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+Detail for {{ object }}
+
+<ul>
+	
+	<li>
+		
+		{{ object.name }}
+
+	</li>
+
+	<li>
+		
+		{{ object.price }}
+
+	</li>
+
+</ul>
+
+<button>
+
+	<a href=" {% url 'product-delete' pk=object.pk %} ">
+		
+		Delete
+
+	</a>
+
+</button> <br>
+
+<button>
+
+	<a href=" {% url 'product-update' pk=object.pk %} ">
+		
+		Update
+
+	</a>
+
+</button> <br>
+
+<button>
+
+	<a href=" {% url 'product-list' %} ">
+		
+		Back
+
+	</a>
+
+</button>
+
+{% endblock %}

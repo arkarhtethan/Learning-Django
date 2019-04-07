@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+
+{% block style %}
+
+<style type="text/css">
+
+	table {
+
+		border:1px solid black;
+		
+		width:100%;
+		
+		border-spacing: 0px;
+		
+		margin-top: 10px;
+
+	}
+
+	table td {
+		
+		border:1px solid black; 
+		
+		padding:10px 0 10px 10px;"
+	
+	}
+
+	thead {
+
+		background-color: gray;
+
+		color:white;
+
+	}
+
+	.data-row-style {
+		
+
+	}
+
+	td > a {
+		text-decoration: none;
+	}
+
+</style>
+
+{% endblock %}
+
+{% block content %}
+
+<button>
+	
+	<a href="{% url 'product-create' %}"> Create
+	</a>
+
+</button>
+
+
+
+<table style="">
+	
+	<thead>
+
+		<tr>
+			
+			<td >
+				
+				Name
+
+			</td>
+
+			<td>
+				
+				Priec
+
+			</td>
+
+			<td>
+				
+				Category
+
+			</td>
+
+		</tr>
+
+	</thead>
+
+	{% for product in object_list %}
+
+		<tr class="data-row-style">
+
+			<td>
+
+				<a href="{% url 'product-detail' pk=product.pk %}">
+
+				{{ product.name }} 
+			
+				</a>
+
+			</td>
+
+			<td>
+				
+				{{ product.get_category_display}}
+
+			</td>
+
+			<td> {{ product.price }} </td>
+
+		</tr>
+
+	{% endfor %}
+</table>
+{% endblock %}

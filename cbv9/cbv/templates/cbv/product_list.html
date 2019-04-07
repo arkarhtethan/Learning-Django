@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+	<button>
+		
+		<a href="{% url 'product-create' %}">
+			
+			Create
+
+		</a>
+
+	</button>
+
+		<button>
+		
+		<a href="{% url 'product-list' %}">
+			
+			All
+
+		</a>
+
+	</button>
+
+		<button>
+		
+		<a href="{% url 'product-noodle' %}">
+			
+			Noodle
+
+		</a>
+
+	</button>
+
+		<button>
+		
+		<a href="{% url 'product-drink' %}">
+			
+			Drink
+
+		</a>
+
+	</button>
+
+	<button>
+		
+		<a href="{% url 'product-food' %}">
+			
+			Food
+
+		</a>
+
+	</button>
+
+	<button>
+		
+		<a href="{% url 'product-snack' %}">
+			
+			Snack
+
+		</a>
+
+	</button>
+	{% for product in object_list %}
+
+		<ul>
+
+			<li>
+				
+				{{ product.get_category_display }}
+
+			</li>
+			
+			<li>
+
+				<a href="{% url 'product-detail' pk=product.pk %}">
+					
+					{{ product.name }}
+					
+				</a>
+
+			</li>
+
+			<li>
+				
+				{{ product.price }}
+
+			</li>
+
+		</ul>
+
+		{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+
+{% block navbar %}
+
+<div class="container">
+	
+	<div class="m-4 p-4">
+		
+		<div>
+			
+			<div class="btn-group mr-4">
+
+				<button class="btn btn-primary"><a href="{% url 'desktop_list' %}" class="text-white"> Desktop </a></button>
+
+				<button class="btn btn-success"><a href="{% url 'create_desktop' %}" class="text-white"> + </a></button>
+				
+
+			</div>
+
+			<div class="btn-group">
+
+				<button class="btn btn-primary"><a href="{% url 'laptop_list' %}" class="text-white"> Laptop </a></button>
+
+				<button class="btn btn-success"><a href="{% url 'create_laptop' %}" class="text-white"> + </a></button>
+				
+
+			</div>
+
+
+		</div>
+
+	</div>
+
+	</div>
+
+</div>
+
+{% endblock %}
+
+{% block content %}
+
+	<div class="container">
+
+		{% if devices %}
+
+		<table class="table table-hover">
+			
+			<thead>
+				
+				<tr>
+					
+					<td> No </td>
+
+					<td> Name </td>
+
+					<td> Price </td>
+
+					<td> Issue# </td>
+
+					<td> Status </td>
+					
+					<td> Delete? </td>
+
+				</tr>
+
+			</thead>
+
+			<tbody>
+
+				{% for device in devices %}
+				
+				<tr>
+					
+					<td> {{ forloop.counter }} </td>
+
+					<td> 
+
+					{% if tag == 'desktop' %}
+						
+						<a href="{% url 'update_desktop' pk=device.pk %}">
+
+							{{ device.name }} 
+
+						</a>
+
+						{% elif tag == 'laptop' %}
+
+						<a href="{% url 'update_laptop' pk=device.pk %}">
+						
+							{{ device.name }} 
+
+						</a>
+
+						{% endif %}
+
+					</td>
+
+					<td> {{ device.price }} </td>
+
+					<td> {{ device.issue }} </td>
+
+					<td> {{ device.status }} </td>
+
+					<td>
+						
+						<button class="btn btn-danger">
+
+							{% if tag == 'desktop' %}
+							
+							<a href="{% url 'delete_desktop' pk=device.pk %}" class="text-white">
+
+								Delete
+
+							</a>
+
+							{% elif tag == 'laptop' %}
+
+							<a href="{% url 'delete_laptop' pk=device.pk %}" class="text-white">
+							
+								Delete
+
+							</a>
+
+							{% endif %}
+
+						</button>
+
+					</td>
+
+				</tr>
+
+				{% endfor %}
+
+			</tbody>
+
+		</table>
+
+		{% else %}
+
+			There is no devices
+
+		{% endif %}
+
+	</div>
+
+{% endblock %}

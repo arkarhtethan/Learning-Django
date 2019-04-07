@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+	<form method="POST">
+
+		{% csrf_token %}
+		
+		{{ form }}
+
+		<input type="submit" name="" value="Delete">
+
+		<a href="{% url 'product-detail' pk=product.pk %}"> Back </a>
+
+	</form>
+
+{% endblock %}

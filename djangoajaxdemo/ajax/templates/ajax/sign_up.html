@@ -1,0 +1,50 @@
+{% extends 'base.html'%}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="container">
+
+	<form method="POST">
+		
+		{% csrf_token %}
+
+		{{ form|crispy }}
+
+		<input type="submit" name="" value="Create">
+
+	</form>
+
+</div>
+{% endblock %}
+
+{% block javascript %}
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#id_username").change(function(){
+
+		var username = $(this).val();
+		
+		// console.log(username);
+
+		$.ajax({
+			
+			url:"{% url 'ajax:validate-username' %}",
+			
+			data : {
+				'username':username,
+			},
+
+			dataType:'json',
+
+			success: function(data) {
+				if(data.is_taken) {
+					alert("This username already taken");
+				}
+			}
+		})
+	});
+});
+</script>
+{% endblock %}

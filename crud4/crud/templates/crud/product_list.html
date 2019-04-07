@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<button>
+	<a href="{% url 'crud:create' %}">Create</a>
+</button>
+
+	<div>
+		{% for product in object_list%}
+		<ul>
+
+			<li>
+				<a href="{% url 'crud:product-detail' id=product.pk%}">
+					{{ product.name}}		
+				</a>
+			</li>
+			<li>
+				{{ product.price }}
+			</li>
+			<li>
+				{{ product.get_type_of_product_display }}</li>
+	</ul>
+		<hr>
+		{% endfor %}
+
+	</div>
+
+{% endblock %}

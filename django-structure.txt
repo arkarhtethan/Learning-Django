@@ -1,0 +1,9 @@
+my_django_project
+├── manage.py
+└── my_django_project
+    ├── __init__.py
+    ├── settings.py
+    ├── urls.py
+    └── wsgi.py
+
+1 directory, 5 files

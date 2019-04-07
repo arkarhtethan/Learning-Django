@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+	<div>
+		<ul>{{ object.name }}</ul>
+		<ul>{{ object.price }}</ul>
+		<ul>{{ object.get_type_of_product_display }}</ul>
+		<hr>
+		<button>
+			<a href="{% url 'crud:product-list'%}">Back to Product List</a>
+		</button>
+		<button>
+			<a href="{% url 'crud:update' id=object.pk%}">Update</a>
+		</button>
+		<button>
+			<a href="{% url 'crud:delete' id=object.pk%}">Delete</a>
+		</button>
+	</div>
+
+{% endblock %}
